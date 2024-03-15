@@ -1,0 +1,59 @@
+ans 1
+KD4_MOHDIMRAN_83539>create table multicust as select * from salespeople where snum=any(select snum from customers group by snum having count(snum)>1);
+Query OK, 2 rows affected (0.49 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+KD4_MOHDIMRAN_83539>select * from salespeople;
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
+| 1100 | Blanco  | San Jose  | NULL |
++------+---------+-----------+------+
+6 rows in set (0.00 sec)
+
+
+ans-2
+
+KD4_MOHDIMRAN_83539>delete from customers  where cnum NOT IN(Select abcd.cnum from (select c1.cnum from customers c1,orders o1 where c1.cnum=o1.cnum)as abcd);
+Query OK, 1 row affected (0.08 sec)
+
+KD4_MOHDIMRAN_83539>select * from customers;
++------+----------+----------+--------+------+
+| cnum | cname    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    200 | 1001 |
+| 2002 | Giovanni | Rome     |    300 | 1003 |
+| 2003 | Liu      | San Jose |    300 | 1004 |
+| 2004 | Grass    | Berlin   |    400 | 1004 |
+| 2008 | Cisneros | San Jose |    400 | 1007 |
+| 2007 | Pereira  | Rome     |    200 | 1004 |
++------+----------+----------+--------+------+
+6 rows in set (0.00 sec)
+
+
+ans-3
+
+KD4_MOHDIMRAN_83539>update salespeople set comm=comm+0.2 where snum=(select distinct snum from orders where amt>3000);
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+KD4_MOHDIMRAN_83539>select * from orders;
++------+---------+------------+------+------+
+| onum | amt     | odate      | cnum | snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 2008 | 1007 |
+| 3003 |  767.19 | 1990-10-03 | 2001 | 1001 |
+| 3002 | 1900.10 | 1990-10-03 | 2007 | 1004 |
+| 3005 | 5160.45 | 1990-10-03 | 2003 | 1002 |
+| 3006 | 1098.16 | 1990-10-03 | 2008 | 1007 |
+| 3009 | 1713.23 | 1990-10-04 | 2002 | 1003 |
+| 3007 |   75.75 | 1990-10-04 | 2004 | 1002 |
+| 3010 |  309.95 | 1990-10-04 | 2004 | 1002 |
++------+---------+------------+------+------+
+8 rows in set (0.00 sec)
+
