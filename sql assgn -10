@@ -1,0 +1,23 @@
+ans-1
+KD4_MOHDIMRAN_83539>select a.sname,b.sname,a.city from salespeople a,salespeople b where a.city = b.city
+ and a.sname<b.sname;
++--------+--------+----------+
+| sname  | sname  | city     |
++--------+--------+----------+
+| Motika | Peel   | London   |
+| Blanco | Serres | San Jose |
++--------+--------+----------+
+2 rows in set (0.00 sec)
+
+ ans-2
+ KD4_MOHDIMRAN_83539>select distinct(a.cname), b.city,a.rating from customers a,customers b where a.cnum
+= b.cnum and a.rating = 200;
++---------+--------+--------+
+| cname   | city   | rating |
++---------+--------+--------+
+| Hoffman | London |    200 |
+| Clemens | London |    200 |
+| Pereira | Rome   |    200 |
++---------+--------+--------+
+3 rows in set (0.00 sec)
+

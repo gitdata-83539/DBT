@@ -1,0 +1,13 @@
+Q1.Which field of the CUSTOMERS table is the primary key?
+Ans. Cnum
+
+Q2.What is the fourth column of the CUSTOMERS table?
+Ans. Rating
+
+Q3.What is another word for row and column?
+Ans. Row=Tuple/Entity/Opportunity
+     Column=Attribute/Method/Key
+     
+Q4.Why isn't it possible to see the first five rows of a table?
+Ans.The table represents unordered sets hence there is no such thing as first or last five rows.
+

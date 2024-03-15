@@ -1,0 +1,57 @@
+ans1
+KD4_MOHDIMRAN_83539>select onum,snum,amt*.12 as "12% Commission" from orders;
++------+------+----------------+
+| onum | snum | 12% Commission |
++------+------+----------------+
+| 3001 | 1007 |         2.2428 |
+| 3003 | 1001 |        92.0628 |
+| 3002 | 1004 |       228.0120 |
+| 3005 | 1002 |       619.2540 |
+| 3006 | 1007 |       131.7792 |
+| 3009 | 1003 |       205.5876 |
+| 3007 | 1002 |         9.0900 |
+| 3010 | 1002 |        37.1940 |
++------+------+----------------+
+8 rows in set (0.00 sec)
+ 
+ 
+ ans-2
+ KD4_MOHDIMRAN_83539>select city,max(rating) as "The Highest rating is:" from customers group by 1;
++----------+------------------------+
+| city     | The Highest rating is: |
++----------+------------------------+
+| London   |                    200 |
+| Rome     |                    300 |
+| San Jose |                    400 |
+| Berlin   |                    400 |
++----------+------------------------+
+4 rows in set (0.00 sec)
+ 
+ 
+ 
+ ans-3
+ KD4_MOHDIMRAN_83539>select rating,cname,cnum from customers order by rating desc;
++--------+----------+------+
+| rating | cname    | cnum |
++--------+----------+------+
+|    400 | Grass    | 2004 |
+|    400 | Cisneros | 2008 |
+|    300 | Giovanni | 2002 |
+|    300 | Liu      | 2003 |
+|    200 | Hoffman  | 2001 |
+|    200 | Clemens  | 2006 |
+|    200 | Pereira  | 2007 |
++--------+----------+------+
+7 rows in set (0.00 sec)
+
+ans-4
+KD4_MOHDIMRAN_83539>select count(onum) "Count of orders",odate from orders group by odate order by count(onum)  desc;
++-----------------+------------+
+| Count of orders | odate      |
++-----------------+------------+
+|               5 | 1990-10-03 |
+|               3 | 1990-10-04 |
++-----------------+------------+
+2 rows in set (0.00 sec)
+
+
