@@ -1,0 +1,187 @@
+                                MongoDB Assingnment
+  open terminal
+   ans1 sudo apt-get install gnupg curl
+  
+ ans -2  curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor
+   
+ ans 3  echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+   
+   sudo apt-get install -y mongodb-org
+   
+  
+  
+ans -4
+sudo systemctl start mongod
+
+
+ANS-5
+sudo systemctl status mongod
+sudo systemctl stop mongod
+
+
+
+
+ans-6
+test> show dbs
+admin   40.00 KiB
+config  12.00 KiB
+local   72.00 KiB
+
+ans -7
+test> use CDAC
+switched to db CDAC
+CDAC> 
+
+ 
+ ans -8
+ CDAC> show collections
+myclass
+users
+CDAC> 
+
+ANS-9
+CDAC> db.createCollection("LIBRARY");
+{ ok: 1 }
+CDAC> 
+
+
+ans -10
+CDAC> db.LIBRARY.insert({title :'MongoDB programming', author:'Sameer', likes : 100})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f56e1da5714c33f0db83b1') }
+}
+  ans11
+  CDAC> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f56df1a5714c33f0db83b0'),
+    title: 'MongoDB programming',
+    author: 'sameer',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f56e1da5714c33f0db83b1'),
+    title: 'MongoDB programming',
+    author: 'Sameer',
+    likes: 100
+  }
+
+ans12
+CDAC> db.LIBRARY.insert({title :'MySQL programming', authors:['Jack', 'Jill'] ,likes : 200 })
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f56fe8a5714c33f0db83b2') }
+}
+CDAC> 
+
+ans-13
+
+CDAC> db.LIBRARY.insert({title :'MySQL programming', authors:['Jack', 'Jill'] ,likes : 200 })
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f56fe8a5714c33f0db83b2') }
+}
+CDAC> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f56df1a5714c33f0db83b0'),
+    title: 'MongoDB programming',
+    author: 'sameer',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f56e1da5714c33f0db83b1'),
+    title: 'MongoDB programming',
+    author: 'Sameer',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f56fe8a5714c33f0db83b2'),
+    title: 'MySQL programming',
+    authors: [ 'Jack', 'Jill' ],
+    likes: 200
+  }
+]
+
+ans -14
+CDAC> db.LIBRARY.findOne ()
+{
+  _id: ObjectId('65f56df1a5714c33f0db83b0'),
+  title: 'MongoDB programming',
+  author: 'sameer',
+  likes: 100
+}
+ ans-15
+ CDAC> db.LIBRARY.find().pretty()
+[
+  {
+    _id: ObjectId('65f56df1a5714c33f0db83b0'),
+    title: 'MongoDB programming',
+    author: 'sameer',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f56e1da5714c33f0db83b1'),
+    title: 'MongoDB programming',
+    author: 'Sameer',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f56fe8a5714c33f0db83b2'),
+    title: 'MySQL programming',
+    authors: [ 'Jack', 'Jill' ],
+    likes: 200
+  }
+]
+ ans-16
+ 
+ CDAC> db.LIBRARY.updateOne({author: 'Sameer'},{$set: {author :'Sameer Dehadrai'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+
+used pretty()
+
+CDAC> db.LIBRARY.updateOne({author: 'Sameer'},{$set: {author :'Sameer Dehadrai'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+ans-17
+CDAC> db.LIBRARY.deleteOne({likes : 100});
+{ acknowledged: true, deletedCount: 0 }
+CDAC> 
+
+
+CDAC> db.LIBRARY.find().pretty()
+[
+  {
+    _id: ObjectId('65f56fe8a5714c33f0db83b2'),
+    title: 'MySQL programming',
+    authors: [ 'Jack', 'Jill' ],
+    likes: 200
+  }
+  
+  ans-18
+  CDAC> db.LIBRARY.drop()
+true
+
+CDAC> show collections
+myclass
+users
+
+]
+  ans-19
+  CDAC> db.CDAC.drop()
+true
+
